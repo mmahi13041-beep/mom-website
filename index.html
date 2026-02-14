@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Georgia', serif;
+      font-family: Georgia, serif;
       background-color: #6a0dad;
       text-align: center;
       color: white;
@@ -15,12 +15,12 @@
     }
 
     .container {
-      padding: 40px 20px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 30px 20px;
     }
 
     button {
@@ -44,22 +44,10 @@
       line-height: 1.7;
     }
 
-    .heart {
-      position: absolute;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
-      color: pink;
-    }
-
-    @keyframes floatUp {
-      from {
-        transform: translateY(100vh);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-10vh);
-        opacity: 0;
-      }
+    .hug {
+      font-size: 60px;
+      margin: 20px 0;
+      animation: hug 1.5s infinite;
     }
 
     @keyframes hug {
@@ -68,36 +56,40 @@
       100% { transform: scale(1); }
     }
 
-    .hug {
-      font-size: 60px;
-      animation: hug 1.5s infinite;
-      margin-top: 20px;
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      color: pink;
     }
 
-    .fadeIn {
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-110vh); opacity: 0; }
     }
   </style>
 </head>
 
 <body>
 
-<div class="container" id="main">
-  <h1>Mom… 💜</h1>
-  <p>Will you always be my forever best friend?</p>
-  <button onclick="showNote()">Yes 💜</button>
-</div>
+<div id="app"></div>
 
 <script>
 
+function showHome() {
+  document.getElementById("app").innerHTML = `
+    <div class="container">
+      <h1>Mom… 💜</h1>
+      <p>Will you always be my forever best friend?</p>
+      <button onclick="showNote()">Yes 💜</button>
+    </div>
+  `;
+}
+
 function showNote() {
-  document.body.innerHTML = `
-    <div class="container fadeIn">
+  document.getElementById("app").innerHTML = `
+    <div class="container">
       <div class="box">
         If I had a thousand lives to live,<br><br>
         I would choose you to be my mom every single time, without a second thought.
@@ -114,8 +106,8 @@ function showNote() {
 }
 
 function showReasons() {
-  document.body.innerHTML = `
-    <div class="container fadeIn">
+  document.getElementById("app").innerHTML = `
+    <div class="container">
       <h1>Reasons Why I Love You 💜</h1>
 
       <div class="box">
@@ -142,18 +134,18 @@ function showReasons() {
 }
 
 function showFinal() {
-  document.body.innerHTML = `
+  document.getElementById("app").innerHTML = `
     <div class="container">
-      <h1 class="fadeIn">Thank you for being my mom 💜</h1>
+      <h1>Thank you for being my mom 💜</h1>
     </div>
   `;
 
   setInterval(() => {
     const heart = document.createElement("div");
-    heart.classList.add("heart");
+    heart.className = "heart";
     heart.innerHTML = "💜";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 18 + "px";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
     document.body.appendChild(heart);
 
     setTimeout(() => {
@@ -161,6 +153,8 @@ function showFinal() {
     }, 6000);
   }, 400);
 }
+
+showHome(); // THIS makes sure it starts on first page
 
 </script>
 
