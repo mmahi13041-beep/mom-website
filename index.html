@@ -1,60 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For My Mom 💜</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #6a0dad;
+      text-align: center;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      background: white;
+      color: #6a0dad;
+    }
+
+    .box {
+      background: white;
+      color: #6a0dad;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 650px;
+      margin: 15px auto;
+      line-height: 1.7;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      color: pink;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    @keyframes hug {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .hug {
+      font-size: 60px;
+      animation: hug 1.5s infinite;
+      margin-top: 20px;
+    }
+
+    .fadeIn {
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+  <h1>Mom… 💜</h1>
+  <p>Will you always be my forever best friend?</p>
+  <button onclick="showNote()">Yes 💜</button>
+</div>
+
+<script>
+
+function showNote() {
+  document.body.innerHTML = `
+    <div class="container fadeIn">
+      <div class="box">
+        If I had a thousand lives to live,<br><br>
+        I would choose you to be my mom every single time, without a second thought.
+        Because even in every different version of me, you'd still be the one I'd need.<br><br>
+        You are the heart I come from, the love I'll always carry, the one I'll never trade.<br><br>
+        Love you Mom 💜
+      </div>
+
+      <div class="hug">🤗💜</div>
+
+      <button onclick="showReasons()">Next 💜</button>
+    </div>
+  `;
+}
+
+function showReasons() {
+  document.body.innerHTML = `
+    <div class="container fadeIn">
+      <h1>Reasons Why I Love You 💜</h1>
+
+      <div class="box">
+        <strong>1.</strong> I love you because you always support me in everything I do.
+        Whether it’s my studies, my exams, or any small decision, you stand by me and motivate me to do my best.
+        Even when I feel stressed or scared, you remind me that I’m capable and strong.
+      </div>
+
+      <div class="box">
+        <strong>2.</strong> I love you because you understand me without me saying much.
+        Sometimes when I’m upset or tired, you notice it just by looking at my face.
+        You listen to me patiently and give me advice that makes me feel calm and safe.
+      </div>
+
+      <div class="box">
+        <strong>3.</strong> I love you because you sacrifice so much for our family.
+        You work hard every day, take care of everyone’s needs, and still find time to make sure I’m happy.
+        Your love is selfless, and you always put us before yourself.
+      </div>
+
+      <button onclick="showFinal()">One More Thing… 💜</button>
+    </div>
+  `;
+}
+
 function showFinal() {
   document.body.innerHTML = `
-    <style>
-      body {
-        margin: 0;
-        background-color: #6a0dad;
-        overflow: hidden;
-        font-family: 'Georgia', serif;
-      }
-
-      .final-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        text-align: center;
-        color: white;
-        flex-direction: column;
-      }
-
-      .message {
-        font-size: 32px;
-        animation: fadeIn 2s ease-in-out;
-      }
-
-      .heart {
-        position: absolute;
-        font-size: 22px;
-        animation: floatUp 6s linear infinite;
-        color: pink;
-      }
-
-      @keyframes floatUp {
-        from {
-          transform: translateY(100vh);
-          opacity: 1;
-        }
-        to {
-          transform: translateY(-10vh);
-          opacity: 0;
-        }
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-    </style>
-
-    <div class="final-container">
-      <div class="message">
-        Thank you for being my mom 💜
-      </div>
+    <div class="container">
+      <h1 class="fadeIn">Thank you for being my mom 💜</h1>
     </div>
   `;
 
-  // Floating hearts animation
   setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -68,3 +161,8 @@ function showFinal() {
     }, 6000);
   }, 400);
 }
+
+</script>
+
+</body>
+</html>
